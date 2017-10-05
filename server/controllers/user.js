@@ -36,3 +36,10 @@ export function updateUser(req, res) {
     });
   });
 }
+
+export function deleteUser(req, res) {
+  User.remove({ username: req.params.username }, function(err) {
+    if (err) throw err;
+    res.json({ message: `deleted ${req.params.username}` });
+  });
+}
